@@ -1,7 +1,7 @@
 # some comment
 class PostsController < ApplicationController
   # comment
-  before_action :find_post, only: %i[show edit update destroy]
+  before_action :find_post, only: %i[show edit update destroy upvote downvote]
   before_action :authenticate_user!, except: %i[index show]
 
   def index
@@ -40,6 +40,16 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_path
+  end
+
+  def upvote
+    @post.upvote_by current_user
+    redirect_back fallback_location: root_path
+  end
+
+  def downvote
+    @post.downvote_by current_user
+    redirect_back fallback_location: root_path
   end
 
   private

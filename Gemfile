@@ -26,6 +26,7 @@ group :development, :test do
   gem 'devise', '~> 4.4', '>= 4.4.1'
   gem 'paperclip', '~> 6.0'
   gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
+  gem 'acts_as_votable', '~> 0.11.1'
 end
 
 group :development do
